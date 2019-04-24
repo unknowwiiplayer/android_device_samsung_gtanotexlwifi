@@ -58,6 +58,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # TWRP specific build flags
 RECOVERY_VARIANT := twrp
 TW_THEME := portrait_hdpi
+TW_USE_TOOLBOX := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
