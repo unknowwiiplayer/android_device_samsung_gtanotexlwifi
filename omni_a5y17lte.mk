@@ -14,11 +14,16 @@
 # limitations under the License.
 #
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+PRODUCT_RELEASE_NAME := a5y17lte
+
+$(call inherit-product, build/target/product/embedded.mk)
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
+
+PRODUCT_PACKAGES += \
+	charger_res_images \
+	charger
 
 PRODUCT_DEVICE := a5y17lte
 PRODUCT_NAME := omni_a5y17lte
