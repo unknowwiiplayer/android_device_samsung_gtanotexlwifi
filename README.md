@@ -1,4 +1,4 @@
-# TWRP device tree for Samsung A5 2017 aka a5y17lte
+# TWRP device tree for Samsung Tab A 10.1 With S-Pen (2016) (gtanotexlwifi)
 
 ## Kernel source available at 
-https://github.com/corsicanu/android_kernel_samsung_universal7880
+https://github.com/unknowwiiplayer/kernel_samsung_exynos7870

@@ -14,5 +14,10 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/a5y17lte/
+ifneq ($(filter gtanotexlwifi,$(TARGET_DEVICE)),)
+
+LOCAL_PATH := device/samsung/gtanotexlwifi/
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
+endif

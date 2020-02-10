@@ -14,14 +14,10 @@
 # limitations under the License.
 #
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
-
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
-
-PRODUCT_DEVICE := a5y17lte
-PRODUCT_NAME := omni_a5y17lte
-PRODUCT_MODEL := SM-A520F
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+PRODUCT_DEVICE := gtanotexlwifi
+PRODUCT_NAME := omni_gtanotexlwifi
 PRODUCT_BRAND := samsung
+PRODUCT_MODEL := SM-P580
 PRODUCT_MANUFACTURER := samsung
+

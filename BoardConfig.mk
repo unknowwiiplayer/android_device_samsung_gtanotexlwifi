@@ -14,65 +14,79 @@
 # limitations under the License.
 #
 
+LOCAL_PATH := device/samsung/gtanotexlwifi
+
 # Platform
-BOARD_VENDOR := samsung
 TARGET_BOARD_PLATFORM := exynos5
-TARGET_SOC := exynos7880
-TARGET_BOOTLOADER_BOARD_NAME := universal7880
+TARGET_SOC := exynos7870
+TARGET_BOARD_PLATFORM_GPU := mali-t830mp2
+TARGET_BOOTLOADER_BOARD_NAME := universal7870
 TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
 
-# Architecture
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
+# CPU
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_CORTEX_A53 := true
 
-# Secondary Architecture
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
 
 # Kernel
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CONFIG := exynos7880-a5y17lte_eur_defconfig
+TARGET_KERNEL_CONFIG := exynos7870-gtanotexlwifi_defconfig
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/samsung/universal7880
+TARGET_KERNEL_SOURCE := kernel/samsung/P580KXU1CRJ7
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+KERNEL_TOOLCHAIN := /home/unknowwiiplayer/Desktop/Kernels/93092903254cba0b6950c94170332973a85b450f/bin
 
 # Image
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/a5y17lte/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/gtanotexlwifi/mkbootimg.mk
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --board SRPPG02A000RU
 TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
+
+# Partitions
+BOARD_BOOTIMAGE_PARTITION_SIZE     := 0x002000000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x002600000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 0x0DF800000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x2A5FFB000 # 0x2A6000000 - 20480 (footer)
+BOARD_CACHEIMAGE_PARTITION_SIZE    := 0x00C800000
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE  := ext4
+BOARD_FLASH_BLOCK_SIZE := 131072
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # TWRP specific build flags
-RECOVERY_VARIANT := twrp
+TARGET_RECOVERY_FSTAB := device/samsung/gtanotexlwifi/recovery.fstab
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
-TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/13600000.usb/13600000.dwc3/gadget/lun%d/file"
+TW_BRIGHTNESS_PATH := "/sys/devices/14800000.dsim/backlight/panel/brightness"
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 162
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_INCLUDE_NTFS_3G := true
-TW_INCLUDE_FBE := true
+#TW_NO_EXFAT_FUSE := true
+TW_EXCLUDE_SUPERSU := true
+
+# Encryption support
 TW_INCLUDE_CRYPTO := true
-TW_EXTRA_LANGUAGES := true
-TW_USE_NEW_MINADBD := true
-BOARD_HAS_NO_REAL_SDCARD := true
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
+# Samsung's encryption is currently unsupported
+#TW_INCLUDE_CRYPTO_SAMSUNG := true
+#TARGET_HW_DISK_ENCRYPTION := true
+
+TARGET_SYSTEM_PROP := device/samsung/gtanotexlwifi/system.prop
 
 # Include
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/a5y17lte/include
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/gtanotexlwifi/include
+
 
